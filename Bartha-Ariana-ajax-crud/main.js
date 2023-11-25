@@ -1,7 +1,7 @@
 import "./style.css";
 
-const api_url = "https://retoolapi.dev/T4Mjdu/productOrder";
-//const api_url = "https://retoolapi.dev/ygiOOo/data";
+
+const api_url = "https://retoolapi.dev/BYNwa5/productOrder";
 
 document.addEventListener("DOMContentLoaded", () => {
   const ordersForm = document.getElementById("ordersForm");
@@ -16,15 +16,15 @@ function handleSubmit(event) {
   const id = document.getElementById('id').value;
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
+  const address = document.getElementById('address').value;
   const product = document.getElementById('product').value;
-  const date = document.getElementById('dateOfOrder').value;
-  const status = document.getElementById('status').value;
+  const quantity = document.getElementById('quantity').value;
   const order = {
     name: name,
     email: email,
+    address: address,
     product: product,
-    date: date,
-    status: status
+    quantity: quantity
   };
   if (id == "") {
     addOrder(order);
@@ -62,44 +62,14 @@ async function addOrder(order) {
   }
 }
 
-/*async function addOrder(event) {
-  event.preventDefault();
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const product = document.getElementById('product').value;
-  const date = document.getElementById('dateOfOrder').value;
-  const status = document.getElementById('status').value;
-  const order = {
-    name: name,
-    email: email,
-    product: product,
-    date: date,
-    status: status
-  };
-  console.log(order);
-  console.log(JSON.stringify(order));
-
-  const response = await fetch(api_url, {
-    method: "POST",
-    body: JSON.stringify(order),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
-  if (response.ok) {
-    listOrders();
-    resetForm();
-
-  }
-}*/
 
 function resetForm() {
   document.getElementById('id').value = "";
   document.getElementById('name').value = "";
   document.getElementById('email').value = "";
+  document.getElementById('address').value = "";
   document.getElementById('product').value = "";
-  document.getElementById('dateOfOrder').value = "";
-  document.getElementById('status').value = "";
+  document.getElementById('quantity').value = "";
   document.getElementById('updateButton').classList.add('hide');
   document.getElementById('submitButton').classList.remove('hide');
 }
@@ -121,9 +91,9 @@ async function fillUpdateOrder(id) {
   document.getElementById("id").value = order.id;
   document.getElementById("name").value = order.name;
   document.getElementById("email").value = order.email;
+  document.getElementById("address").value = order.address;
   document.getElementById("product").value = order.product;
-  document.getElementById("dateOfOrder").value = order.date_of_order;
-  document.getElementById("status").value = order.delivery_status;
+  document.getElementById("quantity").value = order.quantity;
   document.getElementById("submitButton").classList.add('hide');
   document.getElementById("updateButton").classList.remove('hide');
 }
@@ -138,9 +108,9 @@ function listOrders() {
         const idTableData = document.createElement("td");
         const nameTableData = document.createElement("td");
         const emailTableData = document.createElement("td");
+        const addressTableData = document.createElement("td");
         const productTableData = document.createElement("td");
-        const dateOfOrderTableData = document.createElement("td");
-        const statusTableData = document.createElement("td");
+        const quantityTableData = document.createElement("td");
 
         const actionsTableData = document.createElement("td");
         const updateButton = document.createElement("button");
@@ -155,15 +125,15 @@ function listOrders() {
         idTableData.textContent = order.id;
         nameTableData.textContent = order.name;
         emailTableData.textContent = order.email;
+        addressTableData.textContent = order.address;
         productTableData.textContent = order.product;
-        dateOfOrderTableData.textContent = order.date_of_order;
-        statusTableData.textContent = order.delivery_status;
+        quantityTableData.textContent = order.quantity;
         tableRow.appendChild(idTableData);
         tableRow.appendChild(nameTableData);
         tableRow.appendChild(emailTableData);
+        tableRow.appendChild(addressTableData);
         tableRow.appendChild(productTableData);
-        tableRow.appendChild(dateOfOrderTableData);
-        tableRow.appendChild(statusTableData);
+        tableRow.appendChild(quantityTableData);
         tableRow.appendChild(actionsTableData);
         ordersTable.appendChild(tableRow);
       });

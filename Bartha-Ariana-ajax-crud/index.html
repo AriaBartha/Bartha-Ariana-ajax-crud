@@ -22,16 +22,16 @@
         <input type="email" id="email" required>
       </div>
       <div>
+        <label for="address">Address</label>
+        <input type="text" id="address" required>
+      </div>
+      <div>
         <label for="product">Product's code</label>
         <input type="text" id="product" required>
       </div>
       <div>
-        <label for="dateOfOrder">Date of order</label>
-        <input type="datetime-local" id="dateOfOrder" required>
-      </div>
-      <div>
-        <label for="status">Delivery status</label>
-        <input type="text" id="status" required>
+        <label for="quantity">Quantity</label>
+        <input type="text" id="quantity" required>
       </div>
       <button type="submit" id="submitButton">Submit</button>
       <button type="submit" id="updateButton" class="hide">Update</button>
@@ -43,9 +43,9 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Address</th>
         <th>Product ID</th>
-        <th>Date of Order</th>
-        <th>Delivery status</th>
+        <th>Quantity</th>
         <th>Actions</th>
       </thead>
       <tbody id="ordersTable">
