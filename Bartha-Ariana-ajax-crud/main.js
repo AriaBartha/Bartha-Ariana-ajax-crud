@@ -71,6 +71,7 @@ function listOrders() {
         const actionsTableData = document.createElement("td");
         const updateButton = document.createElement("button");
         updateButton.textContent = "Update order";
+        updateButton.addEventListener("click", () => updateOrder(orders.id));
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete order";
         deleteButton.addEventListener("click", () => deleteOrder(orders.id));
