@@ -3,6 +3,8 @@ const api_url = "https://retoolapi.dev/T4Mjdu/productOrder";
 document.addEventListener("DOMContentLoaded", () => {
   const ordersForm = document.getElementById("ordersForm");
   ordersForm.addEventListener("submit", addOrder);
+  const resetButton = document.getElementById("resetButton");
+  resetButton.addEventListener("click", resetForm);
   listOrders();
 });
 
@@ -31,7 +33,19 @@ async function addOrder(event) {
       "Content-Type": "application/json"
     }
   });
+  if (response.ok) {
+    listOrders();
+    resetForm();
 
+  }
+}
+
+function resetForm() {
+  document.getElementById('name').value = "";
+  document.getElementById('email').value = "";
+  document.getElementById('product').value = "";
+  document.getElementById('dateOfOrder').value = "";
+  document.getElementById('status').value = "";
 }
 
 function listOrders() {
