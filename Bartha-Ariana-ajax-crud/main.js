@@ -4,12 +4,33 @@ const api_url = "https://retoolapi.dev/T4Mjdu/productOrder";
 
 document.addEventListener("DOMContentLoaded", () => {
   const ordersForm = document.getElementById("ordersForm");
-  ordersForm.addEventListener("submit", addOrder);
   const resetButton = document.getElementById("resetButton");
   resetButton.addEventListener("click", resetForm);
+  ordersForm.addEventListener("submit", handleSubmit);
   listOrders();
 });
 
+function handleSubmit(event) {
+  event.preventDefault();
+  const id = document.getElementById('id').value;
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const product = document.getElementById('product').value;
+  const date = document.getElementById('dateOfOrder').value;
+  const status = document.getElementById('status').value;
+  const order = {
+    name: name,
+    email: email,
+    product: product,
+    date: date,
+    status: status
+  };
+  if (id == "") {
+    addOrder(order);
+  } else {
+    fillUpdateOrder(id, order);
+  }
+}
 
 async function addOrder(event) {
   event.preventDefault();
@@ -43,11 +64,14 @@ async function addOrder(event) {
 }
 
 function resetForm() {
+  document.getElementById('id').value = "";
   document.getElementById('name').value = "";
   document.getElementById('email').value = "";
   document.getElementById('product').value = "";
   document.getElementById('dateOfOrder').value = "";
   document.getElementById('status').value = "";
+  document.getElementById('updateButton').classList.add('hide');
+  document.getElementById('submitButton').classList.remove('hide');
 }
 
 async function deleteOrder(id) {
@@ -57,7 +81,7 @@ async function deleteOrder(id) {
   }
 }
 
-async function updateOrder(id) {
+async function fillUpdateOrder(id) {
   const response = await fetch(`${api_url}/${id}`);
   if (!response.ok) {
     alert("An error occured while loading content.");
@@ -73,8 +97,6 @@ async function updateOrder(id) {
   document.getElementById("submitButton").classList.add('hide');
   document.getElementById("updateButton").classList.remove('hide');
 }
-
-
 
 function listOrders() {
   const ordersTable = document.getElementById("ordersTable");
@@ -92,7 +114,7 @@ function listOrders() {
         const actionsTableData = document.createElement("td");
         const updateButton = document.createElement("button");
         updateButton.textContent = "Update order";
-        updateButton.addEventListener("click", () => updateOrder(orders.id));
+        updateButton.addEventListener("click", () => fillUpdateOrder(orders.id));
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete order";
         deleteButton.addEventListener("click", () => deleteOrder(orders.id));
