@@ -116,13 +116,13 @@ async function fillUpdateOrder(id) {
     alert("An error occured while loading content.");
     return;
   }
-  const orders = await response.json();
-  document.getElementById("id").value = orders.id;
-  document.getElementById("name").value = orders.name;
-  document.getElementById("email").value = orders.email;
-  document.getElementById("product").value = orders.product;
-  document.getElementById("dateOfOrder").value = orders.date_of_order;
-  document.getElementById("status").value = orders.delivery_status;
+  const order = await response.json();
+  document.getElementById("id").value = order.id;
+  document.getElementById("name").value = order.name;
+  document.getElementById("email").value = order.email;
+  document.getElementById("product").value = order.product;
+  document.getElementById("dateOfOrder").value = order.date_of_order;
+  document.getElementById("status").value = order.delivery_status;
   document.getElementById("submitButton").classList.add('hide');
   document.getElementById("updateButton").classList.remove('hide');
 }
@@ -131,7 +131,8 @@ function listOrders() {
   const ordersTable = document.getElementById("ordersTable");
   fetch(api_url).then(httpResponse => httpResponse.json())
     .then(responseBody => {
-      responseBody.forEach(orders => {
+      ordersTable.innerHTML = "";
+      responseBody.forEach(order => {
         const tableRow = document.createElement("tr");
         const idTableData = document.createElement("td");
         const nameTableData = document.createElement("td");
@@ -143,19 +144,19 @@ function listOrders() {
         const actionsTableData = document.createElement("td");
         const updateButton = document.createElement("button");
         updateButton.textContent = "Update order";
-        updateButton.addEventListener("click", () => fillUpdateOrder(orders.id));
+        updateButton.addEventListener("click", () => fillUpdateOrder(order.id));
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete order";
-        deleteButton.addEventListener("click", () => deleteOrder(orders.id));
+        deleteButton.addEventListener("click", () => deleteOrder(order.id));
         actionsTableData.appendChild(updateButton)
         actionsTableData.appendChild(deleteButton)
 
-        idTableData.textContent = orders.id;
-        nameTableData.textContent = orders.name;
-        emailTableData.textContent = orders.email;
-        productTableData.textContent = orders.product;
-        dateOfOrderTableData.textContent = orders.date_of_order;
-        statusTableData.textContent = orders.delivery_status;
+        idTableData.textContent = order.id;
+        nameTableData.textContent = order.name;
+        emailTableData.textContent = order.email;
+        productTableData.textContent = order.product;
+        dateOfOrderTableData.textContent = order.date_of_order;
+        statusTableData.textContent = order.delivery_status;
         tableRow.appendChild(idTableData);
         tableRow.appendChild(nameTableData);
         tableRow.appendChild(emailTableData);
