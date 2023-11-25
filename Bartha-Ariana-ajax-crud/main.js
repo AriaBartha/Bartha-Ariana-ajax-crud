@@ -48,6 +48,13 @@ function resetForm() {
   document.getElementById('status').value = "";
 }
 
+async function deleteOrder(id) {
+  const response = await fetch(`${api_url}/${id}`, { method: "DELETE" });
+  if (response.ok) {
+    listOrders();
+  }
+}
+
 function listOrders() {
   const ordersTable = document.getElementById("ordersTable");
   fetch(api_url).then(httpResponse => httpResponse.json())
