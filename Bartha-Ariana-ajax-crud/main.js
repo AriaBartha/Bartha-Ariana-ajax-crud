@@ -1,6 +1,7 @@
 import "./style.css";
 
 const api_url = "https://retoolapi.dev/T4Mjdu/productOrder";
+//const api_url = "https://retoolapi.dev/ygiOOo/data";
 
 document.addEventListener("DOMContentLoaded", () => {
   const ordersForm = document.getElementById("ordersForm");
