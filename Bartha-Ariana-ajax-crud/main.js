@@ -28,7 +28,7 @@ function handleSubmit(event) {
   if (id == "") {
     addOrder(order);
   } else {
-    fillUpdateOrder(id, order);
+    updateOrder(id, order);
   }
 }
 
