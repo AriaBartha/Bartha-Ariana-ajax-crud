@@ -115,9 +115,13 @@ function listOrders() {
 
         const actionsTableData = document.createElement("td");
         const updateButton = document.createElement("button");
+        updateButton.type = 'submit';
+        updateButton.classList.add('btn', 'btn-warning');
         updateButton.textContent = "Update order";
         updateButton.addEventListener("click", () => fillUpdateOrder(order.id));
         const deleteButton = document.createElement("button");
+        deleteButton.type = 'button';
+        deleteButton.classList.add('btn', 'btn-danger');
         deleteButton.textContent = "Delete order";
         deleteButton.addEventListener("click", () => deleteOrder(order.id));
         actionsTableData.appendChild(updateButton)
