@@ -62,8 +62,11 @@ function listOrders() {
         const statusTableData = document.createElement("td");
 
         const actionsTableData = document.createElement("td");
+        const updateButton = document.createElement("button");
+        updateButton.textContent = "Update order";
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete order";
+        actionsTableData.appendChild(updateButton)
         actionsTableData.appendChild(deleteButton)
 
         idTableData.textContent = orders.id;
