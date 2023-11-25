@@ -1,3 +1,5 @@
+import "./style.css";
+
 const api_url = "https://retoolapi.dev/T4Mjdu/productOrder";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,6 +56,25 @@ async function deleteOrder(id) {
     listOrders();
   }
 }
+
+async function updateOrder(id) {
+  const response = await fetch(`${api_url}/${id}`);
+  if (!response.ok) {
+    alert("An error occured while loading content.");
+    return;
+  }
+  const orders = await response.json();
+  document.getElementById("id").value = orders.id;
+  document.getElementById("name").value = orders.name;
+  document.getElementById("email").value = orders.email;
+  document.getElementById("product").value = orders.product;
+  document.getElementById("dateOfOrder").value = orders.date_of_order;
+  document.getElementById("status").value = orders.delivery_status;
+  document.getElementById("submitButton").classList.add('hide');
+  document.getElementById("updateButton").classList.remove('hide');
+}
+
+
 
 function listOrders() {
   const ordersTable = document.getElementById("ordersTable");
