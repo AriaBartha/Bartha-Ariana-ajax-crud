@@ -32,7 +32,36 @@ function handleSubmit(event) {
   }
 }
 
-async function addOrder(event) {
+async function updateOrder(id, order) {
+  const response = await fetch(`${api_url}/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(order),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+  if (response.ok) {
+    resetForm();
+    listOrders();
+  }
+}
+
+async function addOrder(order) {
+  console.log(JSON.stringify(order));
+  const response = await fetch(api_url, {
+    method: "POST",
+    body: JSON.stringify(order),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+  if (response.ok) {
+    listOrders();
+    resetForm();
+  }
+}
+
+/*async function addOrder(event) {
   event.preventDefault();
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
@@ -61,7 +90,7 @@ async function addOrder(event) {
     resetForm();
 
   }
-}
+}*/
 
 function resetForm() {
   document.getElementById('id').value = "";
