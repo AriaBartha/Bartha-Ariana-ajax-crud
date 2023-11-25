@@ -60,6 +60,12 @@ function listOrders() {
         const productTableData = document.createElement("td");
         const dateOfOrderTableData = document.createElement("td");
         const statusTableData = document.createElement("td");
+
+        const actionsTableData = document.createElement("td");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete order";
+        actionsTableData.appendChild(deleteButton)
+
         idTableData.textContent = orders.id;
         nameTableData.textContent = orders.name;
         emailTableData.textContent = orders.email;
@@ -72,6 +78,7 @@ function listOrders() {
         tableRow.appendChild(productTableData);
         tableRow.appendChild(dateOfOrderTableData);
         tableRow.appendChild(statusTableData);
+        tableRow.appendChild(actionsTableData);
         ordersTable.appendChild(tableRow);
       });
     });
