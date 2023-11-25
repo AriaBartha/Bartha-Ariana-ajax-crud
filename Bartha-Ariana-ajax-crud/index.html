@@ -18,12 +18,6 @@
         <input type="text" id="name" required>
       </div>
       <div>
-        <input type="radio" id="sentYes" name="sentOrNot" value="Yes">
-        <label for="Yes">Sent</label><br>
-        <input type="radio" id="sentNo" name="sentOrNot" value="No">
-        <label for="No">Not sent</label>
-      </div>
-      <div>
         <label for="email">E-mail</label>
         <input type="email" id="email" required>
       </div>
@@ -33,7 +27,11 @@
       </div>
       <div>
         <label for="date">Date of order</label>
-        <input type="date" id="dateOdOrder" required>
+        <input type="date" id="dateOfOrder" required>
+      </div>
+      <div>
+        <label for="status">Delivery status</label>
+        <input type="text" id="status" required>
       </div>
       <button type="submit" id="submitButton">Submit</button>
       <button type="submit" id="updateButton" class="hide">Update</button>
@@ -44,10 +42,10 @@
       <thead>
         <th>ID</th>
         <th>Name</th>
-        <th>Sent</th>
         <th>Email</th>
         <th>Product ID</th>
         <th>Date of Order</th>
+        <th>Delivery status</th>
       </thead>
       <tbody id="ordersTable">
 
