@@ -14,30 +14,36 @@
   <div id="app" class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
 
     <form id="ordersForm">
-      <input type="hidden" id="id">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" required>
+      <div class="container">
+        <div class="row">
+          <input type="hidden" class="form-control" id="id">
+          <div class="col">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="col">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="col">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" required>
+          </div>
+          <div class="col">
+            <label for="product">Product's code</label>
+            <input type="text" class="form-control" id="product" required>
+          </div>
+          <div class="col">
+            <label for="quantity">Quantity</label>
+            <input type="text" class="form-control" id="quantity" required>
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="email">E-mail</label>
-        <input type="email" id="email" required>
+      <div class="mx-auto p-2" style="width: 200px;">
+        <button type="submit" id="submitButton" class="btn btn-success">Submit</button>
+        <button type="submit" id="updateButton" class="hide">Update</button>
+        <button type="reset" id="resetButton" class="btn btn-primary">Reset</button>
       </div>
-      <div>
-        <label for="address">Address</label>
-        <input type="text" id="address" required>
-      </div>
-      <div>
-        <label for="product">Product's code</label>
-        <input type="text" id="product" required>
-      </div>
-      <div>
-        <label for="quantity">Quantity</label>
-        <input type="text" id="quantity" required>
-      </div>
-      <button type="submit" id="submitButton" class="btn btn-success">Submit</button>
-      <button type="submit" id="updateButton" class="hide">Update</button>
-      <button type="reset" id="resetButton" class="btn btn-primary">Reset</button>
     </form>
 
     <table class="table table-striped">
@@ -50,7 +56,7 @@
         <th>Quantity</th>
         <th>Actions</th>
       </thead>
-      <tbody id="ordersTable">
+      <tbody id="ordersTable" class="table-group-divider">
 
       </tbody>
     </table>
